@@ -1,0 +1,38 @@
+"""Proyecto Integrador: Alquiler de Vehículos.
+
+Práctica Semana 1 - Clean Code.
+Módulo para registrar vehículos disponibles para alquiler.
+"""
+
+base_datos = {
+    "autos": {},
+    "contratos": {},
+}
+
+
+def registrar_auto(placa, marca, modelo, anio):
+    """Registra un vehículo en la base de datos.
+
+    Args:
+        placa (str): Placa del vehículo.
+        marca (str): Marca del vehículo.
+        modelo (str): Modelo del vehículo.
+        anio (int): Año de fabricación.
+
+    Returns:
+        str: Mensaje con el resultado de la operación.
+    """
+    if not placa or not marca or not modelo:
+        return "Error: Datos obligatorios incompletos."
+
+    if placa in base_datos["autos"]:
+        return "Error: El vehículo ya está registrado."
+
+    base_datos["autos"][placa] = {
+        "marca": marca,
+        "modelo": modelo,
+        "anio": anio,
+        "disponible": True,
+    }
+
+    return "Vehículo registrado correctamente."
